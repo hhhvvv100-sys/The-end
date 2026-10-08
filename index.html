@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>سبات الأحمق | نهاية لورد الغوامض</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background:
+        radial-gradient(circle at 50% 20%, rgba(75, 75, 100, .18), transparent 35%),
+        linear-gradient(180deg, #09090e, #050507 70%, #020203);
+    color: #d7d4dc;
+    font-family: "Cairo", sans-serif;
+    min-height: 100vh;
+}
+
+/* ===== INTRO ===== */
+
+.intro {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+}
+
+.mist {
+    position: absolute;
+    inset: -50%;
+    background:
+        radial-gradient(ellipse, rgba(120,120,145,.08), transparent 55%);
+    animation: mistMove 14s infinite alternate ease-in-out;
+}
+
+@keyframes mistMove {
+    from {
+        transform: translate(-3%, -2%) scale(1);
+    }
+    to {
+        transform: translate(4%, 3%) scale(1.12);
+    }
+}
+
+.intro-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.symbol {
+    font-family: "Amiri", serif;
+    font-size: 100px;
+    color: #aaa6b5;
+    opacity: .8;
+    margin-bottom: 10px;
+    animation: float 4s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%,100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+h1 {
+    font-family: "Amiri", serif;
+    font-size: clamp(42px, 8vw, 82px);
+    color: #eeeaf3;
+    text-shadow: 0 0 30px rgba(180,180,200,.25);
+}
+
+.subtitle {
+    margin-top: 10px;
+    color: #918d9d;
+    font-size: 18px;
+}
+
+.enter-btn {
+    margin-top: 40px;
+    border: 1px solid #5c5867;
+    background: rgba(20,20,27,.7);
+    color: #ddd9e3;
+    padding: 13px 35px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: .3s;
+}
+
+.enter-btn:hover {
+    background: #ddd9e3;
+    color: #08080c;
+    box-shadow: 0 0 25px rgba(220,220,230,.15);
+}
+
+/* ===== NAV ===== */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(12px);
+    background: rgba(5,5,8,.78);
+    border-bottom: 1px solid #191820;
+    padding: 14px;
+    text-align: center;
+}
+
+nav a {
+    color: #8e8a98;
+    text-decoration: none;
+    margin: 0 14px;
+    font-size: 14px;
+    transition: .25s;
+}
+
+nav a:hover {
+    color: #e5e1eb;
+}
+
+/* ===== MAIN ===== */
+
+main {
+    max-width: 1000px;
+    margin: auto;
+    padding: 80px 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-family: "Amiri", serif;
+    font-size: 42px;
+    color: #e5e1ea;
+}
+
+.section-title p {
+    color: #777481;
+    margin-top: 8px;
+}
+
+/* ===== TIMELINE ===== */
+
+.timeline {
+    position: relative;
+    margin: 50px auto;
+    max-width: 800px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 50%;
+    width: 1px;
+    background: linear-gradient(
+        transparent,
+        #55515f,
+        transparent
+    );
+}
+
+.event {
+    width: 45%;
+    padding: 24px;
+    background: rgba(16,16,22,.8);
+    border: 1px solid #24232d;
+    margin-bottom: 35px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: .8s;
+}
+
+.event.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.event:nth-child(odd) {
+    margin-left: auto;
+}
+
+.event:nth-child(even) {
+    margin-right: auto;
+}
+
+.event::after {
+    content: "";
+    position: absolute;
+    top: 28px;
+    width: 10px;
+    height: 10px;
+    background: #8d8997;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(180,180,190,.3);
+}
+
+.event:nth-child(odd)::after {
+    right: calc(111% + 1px);
+}
+
+.event:nth-child(even)::after {
+    left: calc(111% + 1px);
+}
+
+.event h3 {
+    color: #d9d5df;
+    margin-bottom: 10px;
+    font-family: "Amiri", serif;
+    font-size: 25px;
+}
+
+.event p {
+    color: #888592;
+    line-height: 1.9;
+    font-size: 14px;
+}
+
+/* ===== CHARACTERS ===== */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.card {
+    background: linear-gradient(145deg,#111118,#09090d);
+    border: 1px solid #25232d;
+    padding: 30px 20px;
+    text-align: center;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: #4b4856;
+}
+
+.card-symbol {
+    font-family: "Amiri", serif;
+    font-size: 45px;
+    color: #aaa6b3;
+    margin-bottom: 12px;
+}
+
+.card h3 {
+    font-family: "Amiri", serif;
+    font-size: 25px;
+    color: #ddd9e2;
+}
+
+.card p {
+    color: #817e8b;
+    line-height: 1.8;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* ===== DREAM ===== */
+
+.dream {
+    margin-top: 100px;
+    min-height: 450px;
+    border: 1px solid #22212a;
+    background:
+        radial-gradient(circle at center, rgba(100,100,125,.08), transparent 55%),
+        #08080c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.dream::before,
+.dream::after {
+    content: "";
+    position: absolute;
+    border: 1px solid #292832;
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+    animation: pulse 6s infinite ease-in-out;
+}
+
+.dream::after {
+    width: 800px;
+    height: 800px;
+    animation-delay: 2s;
+}
+
+@keyframes pulse {
+    0%,100% {
+        transform: scale(.9);
+        opacity: .15;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: .4;
+    }
+}
+
+.dream-content {
+    position: relative;
+    z-index: 2;
+    max-width: 650px;
+}
+
+.dream h2 {
+    font-family: "Amiri", serif;
+    font-size: 45px;
+    color: #e1dde6;
+}
+
+.dream p {
+    color: #85818e;
+    line-height: 2;
+    margin-top: 15px;
+}
+
+/* ===== FIGHT ===== */
+
+.dual {
+    display: flex;
+    align-items: stretch;
+    margin-top: 100px;
+    border: 1px solid #25242d;
+}
+
+.side {
+    flex: 1;
+    padding: 45px 25px;
+    text-align: center;
+}
+
+.klein {
+    background: linear-gradient(90deg,#0b0b10,#111119);
+}
+
+.will {
+    background: linear-gradient(90deg,#111119,#08080c);
+}
+
+.side h3 {
+    font-family: "Amiri", serif;
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.side p {
+    color: #85818e;
+    line-height: 1.9;
+}
+
+.vs {
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0a0a0e;
+    color: #777481;
+    font-family: "Amiri", serif;
+    font-size: 24px;
+    border-left: 1px solid #25242d;
+    border-right: 1px solid #25242d;
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+    border-top: 1px solid #17161d;
+    text-align: center;
+    padding: 35px 20px;
+    color: #55525e;
+    font-size: 13px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:700px) {
+
+    nav a {
+        margin: 0 5px;
+        font-size: 12px;
+    }
+
+    .timeline::before {
+        right: 15px;
+    }
+
+    .event,
+    .event:nth-child(odd),
+    .event:nth-child(even) {
+        width: calc(100% - 40px);
+        margin-right: 40px;
+        margin-left: 0;
+    }
+
+    .event::after,
+    .event:nth-child(odd)::after,
+    .event:nth-child(even)::after {
+        right: auto;
+        left: auto;
+        right: -31px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .dual {
+        flex-direction: column;
+    }
+
+    .vs {
+        width: 100%;
+        height: 55px;
+        border-top: 1px solid #25242d;
+        border-bottom: 1px solid #25242d;
+        border-left: 0;
+        border-right: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== INTRO ===== -->
+
+<section class="intro" id="home">
+
+    <div class="mist"></div>
+
+    <div class="intro-content">
+
+        <div class="symbol">☽</div>
+
+        <h1>سبات الأحمق</h1>
+
+        <p class="subtitle">
+            اللحظة التي دخل فيها كلاين إلى أعماق الحلم
+        </p>
+
+        <button class="enter-btn" onclick="startStory()">
+            ادخل إلى الحلم
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ===== NAV ===== -->
+
+<nav>
+    <a href="#events">الأحداث</a>
+    <a href="#characters">الشخصيات</a>
+    <a href="#dream">الحلم</a>
+    <a href="#battle">المواجهة</a>
+</nav>
+
+<!-- ===== MAIN ===== -->
+
+<main>
+
+    <section id="events">
+
+        <div class="section-title">
+
+            <h2>كيف وصل كلاين إلى السبات؟</h2>
+
+            <p>
+                تسلسل الأحداث التي قادت إلى نهاية الكتاب الأول
+            </p>
+
+        </div>
+
+        <div class="timeline">
+
+            <div class="event">
+                <h3>01 — هزيمة آمون</h3>
+
+                <p>
+                    بعد المواجهة الحاسمة مع آمون، أصبح كلاين
+                    أقرب من أي وقت مضى إلى مرتبة لورد الغوامض.
+                    لكن الانتصار حمل معه خطرًا أعظم.
+                </p>
+            </div>
+
+            <div class="event">
+                <h3>02 — إرادة المستحق السماوي</h3>
+
+                <p>
+                    بسبب التقارب والاندماج مع خصائص لورد الغوامض،
+                    بدأت إرادة المستحق السماوي بالاستيقاظ داخل كلاين.
+                    أصبح الصراع الحقيقي صراعًا على السيطرة.
+                </p>
+            </div>
+
+            <div class="event">
+                <h3>03 — أمانيسيس</h3>
+
+                <p>
+                    احتاج كلاين إلى وسيلة لإيقاف الوضع مؤقتًا
+                    ومنح نفسه فرصة لمواجهة إرادة المستحق السماوي.
+                    وهنا جاءت مساعدة أمانيسيس.
+                </p>
+            </div>
+
+            <div class="event">
+                <h3>04 — ماء نهر الظلام الأبدي</h3>
+
+                <p>
+                    استخدمت أمانيسيس قوة مرتبطة بنهر الظلام الأبدي
+                    لمساعدة كلاين على الدخول في حالة سبات.
+                    لم يكن الأمر مجرد نوم عادي، بل وسيلة لإيقاف
+                    الصراع مؤقتًا.
+                </p>
+            </div>
+
+            <div class="event">
+                <h3>05 — الدخول في الحلم</h3>
+
+                <p>
+                    دخل وعي كلاين في حالة سبات عميق،
+                    وأصبح الصراع مع إرادة المستحق السماوي
+                    مرتبطًا بعالم الحلم.
+                </p>
+            </div>
+
+            <div class="event">
+                <h3>06 — قلعة صفيرة</h3>
+
+                <p>
+                    في أعماق قلعة صفيرة بدأ الصراع النهائي:
+                    كلاين في مواجهة إرادة المستحق السماوي،
+                    والنتيجة ستحدد من سيكون لورد الغوامض الحقيقي.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===== CHARACTERS ===== -->
+
+    <section id="characters">
+
+        <div class="section-title">
+
+            <h2>أطراف الصراع</h2>
+
+            <p>ثلاثة أسماء ارتبطت بنهاية كلاين</p>
+
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="card-symbol">☼</div>
+
+                <h3>كلاين موريتـي</h3>
+
+                <p>
+                    الأحمق، حامل قلعة صفيرة،
+                    والساعي إلى أن يصبح لورد الغوامض
+                    الحقيقي.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-symbol">☾</div>
+
+                <h3>أمانيسيس</h3>
+
+                <p>
+                    إلهة الليل، والتي قدمت لكلاين
+                    المساعدة اللازمة لدخول السبات
+                    ومواجهة الصراع بطريقة مختلفة.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-symbol">◉</div>
+
+                <h3>المستحق السماوي</h3>
+
+                <p>
+                    الإرادة القديمة المرتبطة بلورد الغوامض،
+                    والتي بدأت في الاستيقاظ داخل كلاين
+                    وتهدد بالسيطرة عليه.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===== DREAM ===== -->
+
+    <section id="dream" class="dream">
+
+        <div class="dream-content">
+
+            <h2>الحلم</h2>
+
+            <p>
+                لم يكن سبات كلاين نهاية قصته.
+                كان أشبه بساحة معركة مختلفة،
+                حيث يستطيع مواجهة إرادة المستحق السماوي
+                بعيدًا عن العالم الخارجي.
+            </p>
+
+            <p>
+                جسده ووعيه دخلا في حالة سبات،
+                بينما استمر الصراع في أعماق الحلم.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ===== BATTLE ===== -->
+
+    <section id="battle">
+
+        <div class="section-title" style="margin-top:100px;">
+
+            <h2>الصراع الأخير</h2>
+
+            <p>من سيحصل على السيطرة؟</p>
+
+        </div>
+
+        <div class="dual">
+
+            <div class="side klein">
+
+                <h3>كلاين</h3>
+
+                <p>
+                    إرادته، ذكرياته، شخصيته،
+                    وكل ما بناه خلال رحلته
+                    في طريق التجاوز.
+                </p>
+
+            </div>
+
+            <div class="vs">
+                VS
+            </div>
+
+            <div class="side will">
+
+                <h3>المستحق السماوي</h3>
+
+                <p>
+                    إرادة قديمة وقوة هائلة،
+                    تحاول الاستيقاظ والسيطرة
+                    على جسد كلاين.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    لورد الغوامض — نهاية الكتاب الأول
+    <br>
+    <span>سبات الأحمق</span>
+</footer>
+
+<script>
+
+/* ===== START STORY ===== */
+
+function startStory() {
+
+    document.getElementById("events")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+/* ===== EVENT ANIMATION ===== */
+
+const events = document.querySelectorAll(".event");
+
+const observer = new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("show");
+
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.15
+    }
+);
+
+events.forEach(event => {
+    observer.observe(event);
+});
+
+/* ===== RANDOM DREAM TEXT ===== */
+
+const dream = document.querySelector(".dream");
+
+dream.addEventListener("click", () => {
+
+    const messages = [
+        "الظلام هادئ...",
+        "الحلم لم ينتهِ بعد.",
+        "إرادة قديمة بدأت تستيقظ.",
+        "كلاين ما زال يقاوم.",
+        "الضباب الرمادي يحيط بكل شيء."
+    ];
+
+    const text = messages[
+        Math.floor(Math.random() * messages.length)
+    ];
+
+    const p = document.createElement("p");
+
+    p.textContent = text;
+
+    p.style.marginTop = "20px";
+    p.style.color = "#aaa6b3";
+    p.style.opacity = "0";
+
+    dream.querySelector(".dream-content").appendChild(p);
+
+    setTimeout(() => {
+        p.style.transition = "1s";
+        p.style.opacity = "1";
+    }, 50);
+
+});
+
+</script>
+
+</body>
+</html>
